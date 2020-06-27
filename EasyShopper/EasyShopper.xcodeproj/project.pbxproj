@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1024C13924A75422002593A9 /* MainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024C13824A75422002593A9 /* MainContainer.swift */; };
+		1024C13C24A7544F002593A9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024C13B24A7544F002593A9 /* API.swift */; };
+		1302E0250518EE78C7CD2EA3 /* Pods_EasyShopper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14D75317D3281442EC3B0DB /* Pods_EasyShopper.framework */; };
 		317447952492AE7000862E28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317447942492AE7000862E28 /* AppDelegate.swift */; };
 		317447972492AE7000862E28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317447962492AE7000862E28 /* SceneDelegate.swift */; };
 		317447992492AE7000862E28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317447982492AE7000862E28 /* ViewController.swift */; };
@@ -20,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1024C13824A75422002593A9 /* MainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainer.swift; sourceTree = "<group>"; };
+		1024C13B24A7544F002593A9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		317447912492AE7000862E28 /* EasyShopper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyShopper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		317447942492AE7000862E28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		317447962492AE7000862E28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +37,9 @@
 		317447AB2492AEE500862E28 /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
 		317447AE2492B6DC00862E28 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		317447B02492B78A00862E28 /* ShoppingBasket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBasket.swift; sourceTree = "<group>"; };
+		91CB4FAF3659149DD64188B8 /* Pods-EasyShopper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyShopper.debug.xcconfig"; path = "Target Support Files/Pods-EasyShopper/Pods-EasyShopper.debug.xcconfig"; sourceTree = "<group>"; };
+		A68B3488C1C9850E735F4065 /* Pods-EasyShopper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyShopper.release.xcconfig"; path = "Target Support Files/Pods-EasyShopper/Pods-EasyShopper.release.xcconfig"; sourceTree = "<group>"; };
+		F14D75317D3281442EC3B0DB /* Pods_EasyShopper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyShopper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +47,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1302E0250518EE78C7CD2EA3 /* Pods_EasyShopper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1024C13724A7540E002593A9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1024C13824A75422002593A9 /* MainContainer.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1024C13A24A7543D002593A9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1024C13B24A7544F002593A9 /* API.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		317447882492AE7000862E28 = {
 			isa = PBXGroup;
 			children = (
 				317447932492AE7000862E28 /* EasyShopper */,
 				317447922492AE7000862E28 /* Products */,
+				E4530A284C25EAFE4912E9F6 /* Pods */,
+				BE772D73229973FB2DD38530 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +91,8 @@
 		317447932492AE7000862E28 /* EasyShopper */ = {
 			isa = PBXGroup;
 			children = (
+				1024C13A24A7543D002593A9 /* Services */,
+				1024C13724A7540E002593A9 /* Repository */,
 				317447AD2492B6C600862E28 /* Models */,
 				317447A82492AE8E00862E28 /* DemoData */,
 				317447942492AE7000862E28 /* AppDelegate.swift */,
@@ -95,6 +124,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		BE772D73229973FB2DD38530 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F14D75317D3281442EC3B0DB /* Pods_EasyShopper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4530A284C25EAFE4912E9F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				91CB4FAF3659149DD64188B8 /* Pods-EasyShopper.debug.xcconfig */,
+				A68B3488C1C9850E735F4065 /* Pods-EasyShopper.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,9 +148,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 317447A52492AE7200862E28 /* Build configuration list for PBXNativeTarget "EasyShopper" */;
 			buildPhases = (
+				C7765C7D5DBBA12E4CC908EC /* [CP] Check Pods Manifest.lock */,
 				3174478D2492AE7000862E28 /* Sources */,
 				3174478E2492AE7000862E28 /* Frameworks */,
 				3174478F2492AE7000862E28 /* Resources */,
+				7F96FD515048DBE9865DA361 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,6 +209,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7F96FD515048DBE9865DA361 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyShopper/Pods-EasyShopper-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyShopper/Pods-EasyShopper-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyShopper/Pods-EasyShopper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7765C7D5DBBA12E4CC908EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyShopper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3174478D2492AE7000862E28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -172,6 +262,8 @@
 				317447B12492B78A00862E28 /* ShoppingBasket.swift in Sources */,
 				317447972492AE7000862E28 /* SceneDelegate.swift in Sources */,
 				317447AC2492AEE500862E28 /* DemoData.swift in Sources */,
+				1024C13924A75422002593A9 /* MainContainer.swift in Sources */,
+				1024C13C24A7544F002593A9 /* API.swift in Sources */,
 				317447AF2492B6DC00862E28 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,16 +406,17 @@
 		};
 		317447A62492AE7200862E28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91CB4FAF3659149DD64188B8 /* Pods-EasyShopper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FUWNN36Z78;
+				DEVELOPMENT_TEAM = 9LJZLQ4FN3;
 				INFOPLIST_FILE = EasyShopper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dk.ka-ching.EasyShopper";
+				PRODUCT_BUNDLE_IDENTIFIER = "dk.ka-ching.EasyShopper123";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -332,16 +425,17 @@
 		};
 		317447A72492AE7200862E28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A68B3488C1C9850E735F4065 /* Pods-EasyShopper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FUWNN36Z78;
+				DEVELOPMENT_TEAM = 9LJZLQ4FN3;
 				INFOPLIST_FILE = EasyShopper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dk.ka-ching.EasyShopper";
+				PRODUCT_BUNDLE_IDENTIFIER = "dk.ka-ching.EasyShopper123";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
