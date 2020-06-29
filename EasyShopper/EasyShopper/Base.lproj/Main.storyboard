@@ -1,24 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Basket View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BasketViewController" id="BYZ-38-t0r" customClass="BasketViewController" customModule="EasyShopper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V3I-fH-0cK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMq-6N-LGq">
+                                <rect key="frame" x="334" y="782" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8NP-xk-9ll"/>
+                                    <constraint firstAttribute="height" constant="50" id="thu-ZU-ig8"/>
+                                </constraints>
+                                <state key="normal" title="Shop"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V3I-fH-0cK" secondAttribute="bottom" id="4Ub-JK-auM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KMq-6N-LGq" secondAttribute="bottom" constant="30" id="578-Gt-mlX"/>
+                            <constraint firstItem="V3I-fH-0cK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fLi-o2-mXX"/>
+                            <constraint firstItem="V3I-fH-0cK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rJV-WR-fCd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KMq-6N-LGq" secondAttribute="trailing" constant="30" id="tWa-0q-z2e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V3I-fH-0cK" secondAttribute="trailing" id="uuE-XJ-aEb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="basketTableView" destination="V3I-fH-0cK" id="aXZ-7V-xqT"/>
+                        <outlet property="shopButton" destination="KMq-6N-LGq" id="nKG-5o-PYT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="79.6875"/>
+        </scene>
+        <!--Shop View Controller-->
+        <scene sceneID="PON-ws-9yd">
+            <objects>
+                <viewController storyboardIdentifier="ShopViewController" id="QMO-wC-Pjk" customClass="ShopViewController" customModule="EasyShopper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XWF-05-gV5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tl8-Yx-qdK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3R-AS-5Kp">
+                                        <rect key="frame" x="20" y="10" width="50" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="CHD-cD-Gwh"/>
+                                            <constraint firstAttribute="width" constant="50" id="Zv8-IG-Of5"/>
+                                        </constraints>
+                                        <state key="normal" title="Basket"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2zM-9J-NZX"/>
+                                    <constraint firstItem="f3R-AS-5Kp" firstAttribute="centerY" secondItem="Tl8-Yx-qdK" secondAttribute="centerY" id="AFj-tE-Kth"/>
+                                    <constraint firstItem="f3R-AS-5Kp" firstAttribute="leading" secondItem="Tl8-Yx-qdK" secondAttribute="leading" constant="20" id="PNU-0q-Efs"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kfU-lw-gHA">
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FtK-Jq-xgB" firstAttribute="trailing" secondItem="kfU-lw-gHA" secondAttribute="trailing" id="Cc1-wn-8Xb"/>
+                            <constraint firstItem="kfU-lw-gHA" firstAttribute="leading" secondItem="FtK-Jq-xgB" secondAttribute="leading" id="FUN-He-vTk"/>
+                            <constraint firstItem="Tl8-Yx-qdK" firstAttribute="leading" secondItem="FtK-Jq-xgB" secondAttribute="leading" id="HzR-Gi-4ez"/>
+                            <constraint firstItem="FtK-Jq-xgB" firstAttribute="bottom" secondItem="kfU-lw-gHA" secondAttribute="bottom" id="XEV-to-S6e"/>
+                            <constraint firstItem="FtK-Jq-xgB" firstAttribute="trailing" secondItem="Tl8-Yx-qdK" secondAttribute="trailing" id="kkk-9P-mEw"/>
+                            <constraint firstItem="Tl8-Yx-qdK" firstAttribute="top" secondItem="FtK-Jq-xgB" secondAttribute="top" id="n9o-3O-s1H"/>
+                            <constraint firstItem="kfU-lw-gHA" firstAttribute="top" secondItem="Tl8-Yx-qdK" secondAttribute="bottom" id="vZz-vR-UMU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FtK-Jq-xgB"/>
+                    </view>
+                    <connections>
+                        <outlet property="basketButton" destination="f3R-AS-5Kp" id="oKI-lq-WKP"/>
+                        <outlet property="shopTableView" destination="kfU-lw-gHA" id="gtc-b6-BcA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sYJ-hm-nLq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1099" y="77"/>
         </scene>
     </scenes>
 </document>

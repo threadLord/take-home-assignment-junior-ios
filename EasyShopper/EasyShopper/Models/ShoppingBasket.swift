@@ -6,6 +6,16 @@
 //  Copyright © 2020 Ka-ching. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-#warning("Feel free to model a ShoppingBasket any way you like")
+class BasketProduct {
+    var _productImage : UIImage?
+    var _product: ProductValue
+    var _id: String?
+    
+    init(id : String, product: ProductValue, productImage: UIImage? = nil) {
+        self._id = id
+        self._product = product
+        self._productImage = productImage
+    }
+}
