@@ -2,8 +2,8 @@
 //  ShoppingBasket.swift
 //  EasyShopper
 //
-//  Created by Morten Bek Ditlevsen on 11/06/2020.
-//  Copyright © 2020 Ka-ching. All rights reserved.
+//  Created by Marko Mutavdzic on 11/06/2020.
+//  Copyright © Marko Mutavdzic. All rights reserved.
 //
 
 import UIKit

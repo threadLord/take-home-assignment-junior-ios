@@ -2,17 +2,13 @@
 //  ProductService.swift
 //  EasyShopper
 //
-//  Created by OSX on 29/06/2020.
+//  Created by Marko Mutavdzic on 29/06/2020.
 //  Copyright © 2020 Marko Mutavdzic. All rights reserved.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
-
-protocol ProductServiceDelegate : class {
-    func update()
-}
 
 class ProductService {
     let api = API()
@@ -22,29 +18,18 @@ class ProductService {
     init() {
         fetchRequest()
     }
-//    weak var delegate : ProductServiceDelegate?
-//
-//    private var basketProduct : [BasketProduct] = [] {
-//        didSet {
-//            delegate?.update()
-//        }
-//    }
-//
-//    func getProduct() -> [BasketProduct] {
-//        return basketProduct
-//    }
-//
-//    func add(_ product: BasketProduct) {
-//        basketProduct.append(product)
-//    }
-//
-//    func deleteProduct(at indexPath: Int) {
-//        basketProduct.remove(at: indexPath)
-//    }
-    
+
     var disposeBag = DisposeBag()
     
     var basketProduct = BehaviorRelay<[BasketProduct]>(value: [])
+    
+    var totalPrice : Observable<Int> {
+        return basketProduct.map { prod -> Int in
+            prod.compactMap { prd -> Int in
+                prd._product.retailPrice
+            }.reduce(0,+)
+        }
+    }
     
     func delete(at index: Int) {
         var tempArray = temporaryProductArray()
@@ -75,11 +60,12 @@ class ProductService {
                 return self.api.createRequest()
             }
             .do(onNext: { [weak self] in
-                $0.forEach { prod in
-                    print("Product: \(prod._product.name)")
-                }
                 self?._allProduct.accept($0)
             }).subscribe().disposed(by: disposeBag)
     }
     
+    func refreshSubscriptions() {
+        disposeBag = DisposeBag()
+        fetchRequest()
+    }
 }
