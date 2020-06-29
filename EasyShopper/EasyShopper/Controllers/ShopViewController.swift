@@ -31,19 +31,17 @@ class ShopViewController: UIViewController, Storyboarded {
             
             viewModel = ShopViewModel(allProducts: allProducts, basketProducts: basketProduct, api: api)
             
-            let value = viewModel.basketService.baskProduct.value
+            let value = viewModel.basketService.basketProduct.value
             basketProduct.onNext(value)
             
-//            let elements = viewModel._api.createRequest()
-//                .filter { $0 }            
-//            allProducts.onNext(elements)
             
+
             basketButton.rx.tap
                 .do(onNext: { [ weak self] in
                     guard let self = self else { return }
                     self.mainCoordinator?.dismissLastController()
                 }).subscribe().disposed(by: disposeBag)
-            
+            setupUI()
         }
         
 
@@ -53,8 +51,12 @@ class ShopViewController: UIViewController, Storyboarded {
 extension ShopViewController : UITableViewDelegate {
     
     func setupUI() {
-        viewModel.
-        
+        viewModel._allProduct
+            .do(onNext: { all in
+                all.forEach { prod in
+                    print(" PRODUCT -- Id: \(prod._id)")
+                }
+            }).subscribe().dispose()
         
     }
     

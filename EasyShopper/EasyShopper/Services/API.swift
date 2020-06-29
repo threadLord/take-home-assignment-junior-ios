@@ -43,7 +43,7 @@ struct API {
     func createRequest(session: URLSession = URLSession.shared) -> Observable<[BasketProduct]> {
         let request = URLRequest(url: URLS().demoDataURL)
         return Observable.create { observer in
-            observer.onNext([])
+//            observer.onNext([])
             
             let disposable = session.rx.data(request: request)
                 .subscribe { event in
@@ -69,24 +69,7 @@ struct API {
                 return Disposables.create([disposable])
             }
     }
-    
-//    func getBasketProduct() -> Observable<[BasketProduct]> {
-//        let urlSession = URLSession.shared
-//        let request = URLRequest(url: URLS().demoDataURL)
-//        
-//        
-//        let obs = createRequest().takeLast(1)
-//            .reduce([], +)
-//            .map { prd -> [BasketProduct] in
-//                return (prd?.compactMapValues({ value -> BasketProduct in
-//                    return BasketProduct(id: value.id, product: value, productImage: UIImage())
-//                }) ?? self.fakeBasket)
-//                
-//                
-//        }
-//
-//        
-//    }
+
     
     
     }

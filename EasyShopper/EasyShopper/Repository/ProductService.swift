@@ -15,33 +15,68 @@ protocol ProductServiceDelegate : class {
 }
 
 class ProductService {
+    let api = API()
     
     static let shared = ProductService()
-    weak var delegate : ProductServiceDelegate?
     
-    private var basketProduct : [BasketProduct] = [] {
-        didSet {
-            delegate?.update()
-        }
+    init() {
+        refreshProducts.onNext(Void())
+    }
+//    weak var delegate : ProductServiceDelegate?
+//
+//    private var basketProduct : [BasketProduct] = [] {
+//        didSet {
+//            delegate?.update()
+//        }
+//    }
+//
+//    func getProduct() -> [BasketProduct] {
+//        return basketProduct
+//    }
+//
+//    func add(_ product: BasketProduct) {
+//        basketProduct.append(product)
+//    }
+//
+//    func deleteProduct(at indexPath: Int) {
+//        basketProduct.remove(at: indexPath)
+//    }
+    
+    var disposeBag = DisposeBag()
+    
+    var basketProduct = BehaviorRelay<[BasketProduct]>(value: [])
+    
+    func delete(at index: Int) {
+        var tempArray = temporaryProductArray()
+        tempArray.remove(at: index)
+        basketProduct.accept(tempArray)
     }
     
-    
-    
-    func getProduct() -> [BasketProduct] {
-        return basketProduct
+    func add(product: BasketProduct) {
+        var tempArray = temporaryProductArray()
+        tempArray.append(product)
+        basketProduct.accept(tempArray)
     }
     
-    func add(_ product: BasketProduct) {
-        basketProduct.append(product)
+    func temporaryProductArray() -> [BasketProduct] {
+        return basketProduct.value
     }
     
-    func deleteProduct(at indexPath: Int) {
-        basketProduct.remove(at: indexPath)
+    private var _allProduct = BehaviorRelay<[BasketProduct]>(value: [])
+    let refreshProducts = PublishSubject<Void>()
+    
+    var allProducts: Observable<[BasketProduct]> {
+        return _allProduct.asObservable()
     }
-    
-    var baskProduct = BehaviorRelay<[BasketProduct]>(value: [])
-    
-    func addProduct() 
-    
+
+    private func fetchRequest() -> Observable<[BasketProduct]> {
+        return refreshProducts
+            .flatMapLatest {
+                return self.api.createRequest()
+            }
+            .do(onNext: { [weak self] in
+                self?._allProduct.accept($0)
+            })
+    }
     
 }

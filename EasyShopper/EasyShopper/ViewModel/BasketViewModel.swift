@@ -21,24 +21,20 @@ final class BasketViewModel {
     }
     
     lazy var products : Observable<[BasketProduct]> = {
-        return ProductService.shared.baskProduct.asObservable()
+        return ProductService.shared.basketProduct.asObservable()
     }()
     
     init(product: PublishSubject<[BasketProduct]>) {
         self.productsForBasket = product
-        productsForBasket.onNext(basketService.baskProduct.value)
+        productsForBasket.onNext(basketService.basketProduct.value)
     }
     
     func deleteAt(index: Int) {
-        var tempArray = temporaryProductArray()
-        tempArray.remove(at: index)
-        basketService.baskProduct.accept(tempArray)
-        let value = basketService.baskProduct.value
-        productsForBasket.onNext(value)
+        basketService.delete(at: index)
     }
     
     func temporaryProductArray() -> [BasketProduct] {
-        return basketService.baskProduct.value
+        return basketService.basketProduct.value
     }
     
 }

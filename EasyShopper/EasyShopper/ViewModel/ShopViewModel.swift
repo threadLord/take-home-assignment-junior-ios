@@ -13,29 +13,39 @@ import RxCocoa
 final class ShopViewModel {
     let basketService = ProductService.shared
     
+    var disposeBag = DisposeBag()
+    let _api : API
     private var _allProducts : PublishSubject<[BasketProduct]>
     private var _basketProducts : PublishSubject<[BasketProduct]>
-    var _api : API
-
+    
+    
+    var _allProduct : Observable<[BasketProduct]> {
+        return basketService.allProducts.asObservable()
+    }
+    
     init(allProducts: PublishSubject<[BasketProduct]>,
          basketProducts : PublishSubject<[BasketProduct]>,
-         api : API
-         ) {
+        api: API) {
         self._allProducts = allProducts
         self._basketProducts = basketProducts
         self._api = api
-
-//        api.createRequest().asDriver(onErrorJustReturn: api.fakeBasket)
+//        self._allProduct = _api.createRequest()
+        
+        
+//       _api.createRequest().asDriver(onErrorJustReturn: _api.fakeBasket)
 //            .drive(onNext: { all in
 //                all.forEach { prod in
-//                    print("\(String(describing: prod?._product.name))")
+//                    print("\(String(describing: prod._product.name))")
 //                }
-//            }).disposed(by: disposeBag)
+//            })//.disposed(by: disposeBag)
         
-        
+        basketService.refreshProducts.onNext(Void())
     }
-   
-    
-    
+//    func call() {
+//       _api.createRequest()
+//           .bind(to: allProducts)
+//           .disposed(by: disposeBag)
+//
+//    }
 }
 

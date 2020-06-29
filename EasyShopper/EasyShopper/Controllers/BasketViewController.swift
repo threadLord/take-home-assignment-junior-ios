@@ -26,7 +26,7 @@ class BasketViewController: UIViewController, Storyboarded {
         viewModel = BasketViewModel(product: subject)
         
         setupUI()
-        let value = viewModel.basketService.baskProduct.value
+        let value = viewModel.basketService.basketProduct.value
         subject.onNext(value)
         
         shopButton.rx.tap.do(onNext: { [weak self] in
