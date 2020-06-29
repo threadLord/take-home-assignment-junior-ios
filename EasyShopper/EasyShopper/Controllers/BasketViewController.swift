@@ -33,6 +33,7 @@ class BasketViewController: UIViewController, Storyboarded {
             guard let self = self else { return }
             self.mainCoordinator?.present(.Shop, animated: true)
             
+            self.viewModel.basketService.refreshProducts.onNext(Void())
             }).subscribe().disposed(by: disposeBag)
     }
     
@@ -47,7 +48,7 @@ extension BasketViewController : UITableViewDelegate {
         let product = API().fakeBasket
         
         basketTableView.rx.setDelegate(self).disposed(by: disposeBag)
-        
+        basketTableView.register(UINib(nibName: ProductTVCell.nibID, bundle: nil), forCellReuseIdentifier: ProductTVCell.cellID)
         
         
         viewModel.showProducts

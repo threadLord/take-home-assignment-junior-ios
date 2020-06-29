@@ -32,7 +32,7 @@ class ProductTVCell: UITableViewCell {
     
     
     class var nibID : String {
-        return "ProductCell"
+        return "ProductTVCell"
     }
 
     class var cellID : String {

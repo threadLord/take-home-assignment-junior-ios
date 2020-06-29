@@ -20,7 +20,7 @@ class ProductService {
     static let shared = ProductService()
     
     init() {
-        refreshProducts.onNext(Void())
+        fetchRequest()
     }
 //    weak var delegate : ProductServiceDelegate?
 //
@@ -69,14 +69,17 @@ class ProductService {
         return _allProduct.asObservable()
     }
 
-    private func fetchRequest() -> Observable<[BasketProduct]> {
+    private func fetchRequest() {
         return refreshProducts
             .flatMapLatest {
                 return self.api.createRequest()
             }
             .do(onNext: { [weak self] in
+                $0.forEach { prod in
+                    print("Product: \(prod._product.name)")
+                }
                 self?._allProduct.accept($0)
-            })
+            }).subscribe().disposed(by: disposeBag)
     }
     
 }

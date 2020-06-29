@@ -31,10 +31,6 @@ class ShopViewController: UIViewController, Storyboarded {
             
             viewModel = ShopViewModel(allProducts: allProducts, basketProducts: basketProduct, api: api)
             
-            let value = viewModel.basketService.basketProduct.value
-            basketProduct.onNext(value)
-            
-            
 
             basketButton.rx.tap
                 .do(onNext: { [ weak self] in
@@ -57,6 +53,19 @@ extension ShopViewController : UITableViewDelegate {
                     print(" PRODUCT -- Id: \(prod._id)")
                 }
             }).subscribe().dispose()
+        
+        shopTableView.rx.setDelegate(self).disposed(by: disposeBag)
+        shopTableView.register(UINib(nibName: ProductTVCell.nibID, bundle: nil), forCellReuseIdentifier: ProductTVCell.cellID)
+        
+        
+        viewModel._allProduct
+            .asDriver(onErrorJustReturn: [])
+            .drive(shopTableView.rx.items(cellIdentifier: ProductTVCell.cellID, cellType: ProductTVCell.self)) {  row,element,cell in
+                
+                cell.applyModel(element)
+               
+            }
+            .disposed(by: disposeBag)
         
     }
     
